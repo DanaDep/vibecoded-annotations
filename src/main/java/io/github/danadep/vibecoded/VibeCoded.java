@@ -16,22 +16,20 @@ import java.lang.annotation.Target;
  */
 @Documented
 @Retention(RetentionPolicy.SOURCE)
-@Target({ElementType.TYPE, ElementType.METHOD, ElementType.FIELD, ElementType.CONSTRUCTOR})
+@Target({ElementType.TYPE, ElementType.METHOD})
 public @interface VibeCoded {
 
     /**
-     * The AI tool used to generate the code.
-     * Examples: "Claude", "ChatGPT", "GitHub Copilot", "Cursor", etc.
+     * The AI tool used to generate the code (e.g.: ChatGPT, Claude, GitHub Copilot, etc.).
+     *
+     * @return the name of the AI tool, or empty string if not specified
      */
     String tool() default "";
 
     /**
      * Whether this code has been verified by a human developer.
+     *
+     * @return true if human verified, false otherwise
      */
     boolean humanVerified() default false;
-
-    /**
-     * Additional notes or context about the generation.
-     */
-    String notes() default "";
 }
